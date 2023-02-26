@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:family_financial_planning/pages/login.dart';
+import 'package:family_financial_planning/utils/images_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -11,40 +13,6 @@ class OnBoarding extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _buildBackgroundImage() {
-      return ClipRect(
-        child: Stack(
-          children: [
-            Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(
-                      "https://images.unsplash.com/photo-1621264448270-9ef00e88a935?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=357&q=80"),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
-                child: Container(
-                  color: Colors.black.withOpacity(0.5),
-                ),
-              ),
-            ),
-            const Positioned(
-              bottom: 100,
-              left: 50,
-              height: 150,
-              width: 300,
-              child: Text(
-                "We help you plan a  financially stable and secure future for you & your loved ones.",
-                style: TextStyle(fontSize: 24, color: Colors.white),
-              ),
-            )
-          ],
-        ),
-      );
-    }
-
     const gradientColor = [
       Color.fromRGBO(68, 36, 137, 1),
       Color.fromRGBO(19, 11, 116, 1),
@@ -53,8 +21,9 @@ class OnBoarding extends StatelessWidget {
     ];
     return Material(
       child: Container(
-        decoration:
-            BoxDecoration(gradient: LinearGradient(colors: gradientColor)),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(colors: gradientColor),
+        ),
         child: IntroductionScreen(
           pages: [
             PageViewModel(
@@ -65,34 +34,64 @@ class OnBoarding extends StatelessWidget {
               decoration: PageDecoration(
                 imageAlignment: Alignment.topCenter,
                 imagePadding: EdgeInsets.only(top: 20),
-                bodyPadding: EdgeInsets.all(20),
+                bodyPadding: EdgeInsets.all(10),
                 titleTextStyle: TextStyle(color: Colors.white, fontSize: 30),
                 bodyTextStyle: TextStyle(color: Colors.white, fontSize: 20),
               ),
             ),
             PageViewModel(
-              title: "",
               body: "What do we do here at FFP?",
               reverse: true,
-              image: _buildBackgroundImage(),
+              image: backGroundImage().buildBackgroundImageBlur(),
+              titleWidget: AppLogo().appLogo(),
 
               // ignore: prefer_const_constructors
               decoration: PageDecoration(
                 imageFlex: 2,
                 imageAlignment: Alignment.center,
-                bodyPadding: EdgeInsets.all(20),
+                bodyPadding: EdgeInsets.all(2),
                 // titlePadding: EdgeInsets.all(20),
                 // titleTextStyle: TextStyle(color: Colors.white, fontSize: 25),
                 bodyTextStyle: TextStyle(color: Colors.white, fontSize: 25),
               ),
-            )
+            ),
+            PageViewModel(
+              body: "Manage your finances the fun way.",
+              reverse: true,
+              image: Lottie.network(
+                  "https://assets10.lottiefiles.com/private_files/lf30_ghysqmiq.json"),
+
+              titleWidget: AppLogo().appLogo(),
+              footer: const Padding(
+                padding: EdgeInsets.all(10),
+                child: Text(
+                  "Tell us about your goals,setup a timeline and let us help you achieve them !",
+                  style: TextStyle(color: Colors.white, fontSize: 17),
+                ),
+              ),
+
+              // ignore: prefer_const_constructors
+              decoration: PageDecoration(
+                imageFlex: 2,
+                imagePadding: EdgeInsets.only(bottom: 2, top: 2),
+                imageAlignment: Alignment.center,
+                bodyPadding: EdgeInsets.only(bottom: 3),
+                bodyAlignment: Alignment.center,
+                footerFlex: 0,
+                bodyTextStyle: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+            ),
           ],
           globalBackgroundColor: Color.fromARGB(0, 31, 31, 175),
           done: Text("done"),
-          onDone: () {},
+          // bodyPadding: EdgeInsets.all(20),
+          onDone: () {
+            Login();
+          },
+
           showNextButton: false,
           isTopSafeArea: true,
-          isBottomSafeArea: true,
+          // isBottomSafeArea: true,
         ),
       ),
     );
