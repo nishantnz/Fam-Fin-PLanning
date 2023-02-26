@@ -43,12 +43,25 @@ class OnBoarding extends StatelessWidget {
             PageViewModel(
               body: "What do we do here at FFP?",
               reverse: true,
-              image: backGroundImage().buildBackgroundImageBlur(),
+              image: Lottie.asset("assets/files/money.json"),
               titleWidget: AppLogo().appLogo(),
-
+              footer: const Center(
+                child: Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Text(
+                    "We help you plan a  financially stable and secure future for you & your loved ones.",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17,
+                        fontStyle: FontStyle.italic),
+                  ),
+                ),
+              ),
               // ignore: prefer_const_constructors
               decoration: PageDecoration(
-                imageFlex: 2,
+                imageFlex: 3,
+                bodyFlex: 2,
+                footerFlex: 1,
                 imageAlignment: Alignment.center,
                 bodyPadding: EdgeInsets.all(2),
                 // titlePadding: EdgeInsets.all(20),
@@ -59,15 +72,17 @@ class OnBoarding extends StatelessWidget {
             PageViewModel(
               body: "Manage your finances the fun way.",
               reverse: true,
-              image: Lottie.network(
-                  "https://assets10.lottiefiles.com/private_files/lf30_ghysqmiq.json"),
+              image: Lottie.asset("assets/files/buiness_analytics.json"),
 
               titleWidget: AppLogo().appLogo(),
               footer: const Padding(
                 padding: EdgeInsets.all(10),
                 child: Text(
                   "Tell us about your goals,setup a timeline and let us help you achieve them !",
-                  style: TextStyle(color: Colors.white, fontSize: 17),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 17,
+                      fontStyle: FontStyle.italic),
                 ),
               ),
 
