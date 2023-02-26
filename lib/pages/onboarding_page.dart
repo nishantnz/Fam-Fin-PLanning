@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:family_financial_planning/pages/login.dart';
 import 'package:family_financial_planning/utils/images_functions.dart';
+import 'package:family_financial_planning/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -83,10 +84,16 @@ class OnBoarding extends StatelessWidget {
             ),
           ],
           globalBackgroundColor: Color.fromARGB(0, 31, 31, 175),
-          done: Text("done"),
+          done: Text(
+            "Let's dive in!",
+            style: TextStyle(
+              color: Color.fromARGB(255, 113, 188, 249),
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           // bodyPadding: EdgeInsets.all(20),
           onDone: () {
-            Login();
+            Navigator.pushNamed(context, MyRoutes.loginPage);
           },
 
           showNextButton: false,
