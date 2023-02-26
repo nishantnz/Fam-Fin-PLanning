@@ -5,6 +5,7 @@ class MyTheme {
   static ThemeData lightTheme(BuildContext context) => ThemeData(
         primarySwatch: Colors.blue,
         fontFamily: GoogleFonts.lato().fontFamily,
+        textTheme: Theme.of(context).textTheme,
         // appBarTheme: AppBarTheme(
         //   color: Colors.white,
         //   elevation: 0,
