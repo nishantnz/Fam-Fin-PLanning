@@ -1,3 +1,4 @@
+import 'package:family_financial_planning/pages/home_page.dart';
 import 'package:family_financial_planning/pages/login.dart';
 import 'package:family_financial_planning/pages/onboarding_page.dart';
 import 'package:family_financial_planning/pages/sign_up.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.loginPage: (context) => LoginPage(),
         //MyRoutes.homePage: (context) => HomePage(),
         MyRoutes.signUpPage: (context) => SignUpPage(),
-        MyRoutes.loginPage: (context) => LoginPage(),
+        MyRoutes.homePage: (context) => HomePage(),
         MyRoutes.onBoarding: (context) => OnBoarding(),
       },
     );
