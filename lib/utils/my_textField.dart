@@ -5,16 +5,23 @@ import 'package:flutter/src/widgets/placeholder.dart';
 
 class MyTextField extends StatefulWidget {
   final hintText;
-  bool obscureText = false;
+  bool obscureText;
   final controller;
   final formKey;
+  final keyboardType;
+  final inputFormatter;
+  String? name;
 
-  MyTextField(
-      {super.key,
-      required this.hintText,
-      required this.obscureText,
-      required this.controller,
-      required this.formKey});
+  MyTextField({
+    super.key,
+    required this.hintText,
+    this.obscureText = false,
+    this.controller,
+    this.formKey,
+    this.name,
+    this.keyboardType,
+    this.inputFormatter,
+  });
 
   @override
   State<MyTextField> createState() => _MyTextFieldState();
@@ -26,6 +33,12 @@ class _MyTextFieldState extends State<MyTextField> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25),
       child: TextFormField(
+        keyboardType: widget.keyboardType,
+        inputFormatters: widget.inputFormatter,
+        onChanged: (value) {
+          widget.name = value;
+          setState(() {});
+        },
         validator: (value) {
           if (value == null || value.isEmpty) {
             return 'Please enter some text';

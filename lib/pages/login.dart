@@ -1,3 +1,4 @@
+import 'package:family_financial_planning/utils/colors.dart';
 import 'package:family_financial_planning/utils/my_textField.dart';
 import 'package:family_financial_planning/utils/routes.dart';
 import 'package:family_financial_planning/widgets/themes.dart';
@@ -14,16 +15,11 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final usernameController = new TextEditingController();
-  final passwordController = new TextEditingController();
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
   bool animator = false;
   final _formKey = GlobalKey<FormState>();
-  final gradientColor = [
-    const Color.fromRGBO(68, 36, 137, 1),
-    const Color.fromRGBO(19, 11, 116, 1),
-    const Color.fromRGBO(19, 10, 115, 1),
-    const Color.fromRGBO(40, 10, 104, 1)
-  ];
+  final gradientColor = MyColors.mygradientColor;
 
   @override
   Widget build(BuildContext context) {
@@ -108,19 +104,19 @@ class _LoginPageState extends State<LoginPage> {
                         setState(() {
                           animator = true;
                         });
-                        await Future.delayed(Duration(seconds: 4));
+                        await Future.delayed(const Duration(seconds: 4));
                         Navigator.pushNamed(context, MyRoutes.homePage);
                       }
                     },
-                    child: const Text("Sign In"),
                     style: TextButton.styleFrom(
                       shadowColor: Colors.grey,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),
                       elevation: 10,
-                      backgroundColor: Colors.blueAccent,
+                      backgroundColor: Colors.indigo[900],
                       minimumSize: const Size(150, 50),
                     ),
+                    child: const Text("Sign In"),
                   ),
                   SizedBox(
                     height: 20,
@@ -131,7 +127,9 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       const Text("Not a member ?"),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, MyRoutes.signUpPage);
+                        },
                         child: const Text(
                           "Sign Up",
                           style: TextStyle(color: Colors.blueAccent),
