@@ -1,7 +1,9 @@
-import 'package:family_financial_planning/pages/home_page.dart';
+import 'package:family_financial_planning/pages/navpages/home_page.dart';
 import 'package:family_financial_planning/pages/login.dart';
+import 'package:family_financial_planning/pages/navpages/main_page.dart';
 import 'package:family_financial_planning/pages/onboarding_page.dart';
-import 'package:family_financial_planning/pages/navpages/profile_page.dart';
+import 'package:family_financial_planning/pages/navpages/profile.dart';
+
 import 'package:family_financial_planning/pages/sign_up.dart';
 import 'package:family_financial_planning/utils/routes.dart';
 import 'package:family_financial_planning/widgets/themes.dart';
@@ -28,13 +30,14 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData(
         brightness: Brightness.dark,
       ),
-      initialRoute: MyRoutes.homePage,
+      initialRoute: MyRoutes.mainPage,
       routes: {
         MyRoutes.loginPage: (context) => const LoginPage(),
         MyRoutes.signUpPage: (context) => const SignUpPage(),
         MyRoutes.profile: (context) => const ProfilePage(),
         MyRoutes.homePage: (context) => const HomePage(),
         MyRoutes.onBoarding: (context) => const OnBoarding(),
+        MyRoutes.mainPage: (context) => const MainPage()
       },
     );
   }

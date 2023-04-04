@@ -4,4 +4,5 @@ class MyRoutes {
   static String signUpPage = "/signUp";
   static String onBoarding = "/onBoarding";
   static String profile = "/profile";
+  static String mainPage = "/mainpage";
 }
