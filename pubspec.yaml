@@ -39,6 +39,9 @@ dependencies:
   lottie: ^2.2.0
   introduction_screen: ^3.1.6
   image_picker: ^0.8.7+1
+  simple_gradient_text: ^1.2.4
+  intl: ^0.18.0
+  percent_indicator: ^4.2.3
 
 dev_dependencies:
   flutter_test:
