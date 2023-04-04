@@ -1,7 +1,9 @@
 import 'package:family_financial_planning/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 
 class MyHomeWidgets {
   static Container expenseCard() {
@@ -140,18 +142,16 @@ class MyHomeWidgets {
             // rectangle24Sy9 (105:78)
             left: 5,
             top: 30,
-            child: Align(
-              child: SizedBox(
-                width: 144,
-                height: 40,
-                child: Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment(-1, 0.032),
-                      end: Alignment(0.771, 0.032),
-                      colors: [Color(0xff130b74), Color(0xff442489)],
-                      stops: [0, 1],
-                    ),
+            child: SizedBox(
+              width: 144,
+              height: 40,
+              child: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment(-1, 0.032),
+                    end: Alignment(0.771, 0.032),
+                    colors: [Color(0xff130b74), Color(0xff442489)],
+                    stops: [0, 1],
                   ),
                 ),
               ),

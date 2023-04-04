@@ -42,6 +42,7 @@ dependencies:
   simple_gradient_text: ^1.2.4
   intl: ^0.18.0
   percent_indicator: ^4.2.3
+  flutter_custom_clippers: ^2.1.0
 
 dev_dependencies:
   flutter_test:

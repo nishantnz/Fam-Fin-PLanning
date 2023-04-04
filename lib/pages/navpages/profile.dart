@@ -35,11 +35,11 @@ class _ProfilePageState extends State<ProfilePage> {
     return SafeArea(
       child: Scaffold(
         drawer: Drawer(),
-        appBar: AppBar(
-          flexibleSpace: Container(),
-          title: const Text("Profile Page"),
-        ),
-        backgroundColor: Colors.grey[300],
+        // appBar: AppBar(
+        //   flexibleSpace: Container(),
+        //   title: const Text("Profile Page"),
+        // ),
+        backgroundColor: Colors.white,
         body: SafeArea(
           child: SingleChildScrollView(
             child: Form(
@@ -59,7 +59,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           height: 200,
                           width: 200,
                           decoration: BoxDecoration(
-                            color: Colors.grey,
+                            color: Colors.white54,
                             borderRadius: BorderRadius.circular(100),
                             border: Border.all(width: 2, color: Colors.black),
                           ),
