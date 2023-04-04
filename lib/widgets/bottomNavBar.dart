@@ -14,7 +14,10 @@ class _MyNavBarFulState extends State<MyNavBarFul> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      backgroundColor: Colors.indigo[900],
       currentIndex: _currentIndex,
+      selectedItemColor: Colors.white,
+      unselectedItemColor: Colors.grey[400],
       items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
