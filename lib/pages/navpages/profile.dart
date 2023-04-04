@@ -67,6 +67,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             width: 200,
                             decoration: BoxDecoration(
                               color: Colors.white54,
+                              borderRadius: BorderRadius.circular(100),
                               border: Border.all(width: 2, color: Colors.black),
                             ),
                             child: selectedImagePath.isEmpty
