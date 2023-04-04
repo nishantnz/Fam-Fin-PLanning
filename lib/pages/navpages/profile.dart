@@ -30,15 +30,21 @@ class _ProfilePageState extends State<ProfilePage> {
   //   });
   // }
 
+  final picker = ImagePicker();
+  File? img;
+  Future pickImage() async {
+    XFile? xfile = await picker.pickImage(source: ImageSource.gallery);
+    if (xfile == null) return;
+    PickedFile? pickedFile = PickedFile(xfile.path);
+    setState(() {
+      selectedImagePath = pickedFile.path;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: Drawer(),
-        // appBar: AppBar(
-        //   flexibleSpace: Container(),
-        //   title: const Text("Profile Page"),
-        // ),
         backgroundColor: Colors.white,
         body: SafeArea(
           child: SingleChildScrollView(
@@ -55,33 +61,41 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     Stack(
                       children: [
-                        Container(
-                          height: 200,
-                          width: 200,
-                          decoration: BoxDecoration(
-                            color: Colors.white54,
-                            borderRadius: BorderRadius.circular(100),
-                            border: Border.all(width: 2, color: Colors.black),
-                          ),
-                          child: Icon(
-                            Icons.person,
-                            size: 150,
-                            color: Colors.indigo[900],
+                        ClipOval(
+                          child: Container(
+                            height: 200,
+                            width: 200,
+                            decoration: BoxDecoration(
+                              color: Colors.white54,
+                              border: Border.all(width: 2, color: Colors.black),
+                            ),
+                            child: selectedImagePath.isEmpty
+                                ? Icon(
+                                    Icons.person,
+                                    size: 100,
+                                    color: Colors.indigo[900],
+                                  )
+                                : Image(
+                                    image: FileImage(
+                                      File(selectedImagePath),
+                                    ),
+                                    fit: BoxFit.cover,
+                                  ),
                           ),
                         ),
                         Positioned(
                           right: 2,
                           bottom: 2,
-                          child: Container(
-                            child: IconButton(
-                              onPressed: () {},
-                              icon: Image.asset(
-                                "assets/images/camera.png",
-                                width: 50,
-                              ),
+                          child: IconButton(
+                            onPressed: () {
+                              pickImage();
+                            },
+                            icon: Image.asset(
+                              "assets/images/camera.png",
+                              width: 50,
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                     const SizedBox(
