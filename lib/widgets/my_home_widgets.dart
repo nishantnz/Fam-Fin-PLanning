@@ -193,7 +193,7 @@ class MyHomeWidgets {
           ),
           const Positioned(
             // keepgoingtbV (105:94)
-            left: 9,
+            left: 16,
             top: 100,
             child: SizedBox(
               width: 200,
