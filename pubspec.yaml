@@ -43,6 +43,7 @@ dependencies:
   intl: ^0.18.0
   percent_indicator: ^4.2.3
   flutter_custom_clippers: ^2.1.0
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:
