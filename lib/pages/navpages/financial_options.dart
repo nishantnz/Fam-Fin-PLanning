@@ -1,4 +1,5 @@
 import 'package:family_financial_planning/utils/colors.dart';
+import 'package:family_financial_planning/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -55,11 +56,17 @@ class FinancialOptions extends StatelessWidget {
                     gradient: const LinearGradient(colors: MyColors.cardColor),
                   ),
                   child: ListTile(
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        MyRoutes.finacialInputs,
+                        arguments: index,
+                      );
+                    },
                     contentPadding:
                         const EdgeInsets.only(bottom: 15, left: 20, top: 12),
                     leading: Icon(Icons.attach_money_rounded,
                         color: Colors.greenAccent),
-                    onTap: () {},
                     subtitle: Text(subTitles[index],
                         style: const TextStyle(color: Colors.white)),
                     title: Text(
