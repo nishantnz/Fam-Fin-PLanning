@@ -25,4 +25,11 @@ class MyColors {
     Color.fromRGBO(40, 10, 104, 1),
     Color.fromRGBO(139, 103, 211, 1),
   ];
+
+  static const cardColor = [
+    Color.fromRGBO(123, 81, 208, 1),
+    Color.fromRGBO(44, 37, 124, 1),
+    Color.fromRGBO(40, 10, 104, 1),
+    Color.fromRGBO(73, 33, 159, 1),
+  ];
 }
