@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.homePage: (context) => const HomePage(),
         MyRoutes.onBoarding: (context) => const OnBoarding(),
         MyRoutes.mainPage: (context) => const MainPage(),
-        MyRoutes.finacialInputs: (context) => const FinacialInputs(),
+        MyRoutes.finacialInputs: (context) => FinacialInputs(),
       },
     );
   }
