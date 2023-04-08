@@ -1,10 +1,39 @@
+import 'dart:convert';
 import 'package:family_financial_planning/utils/my_textField.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:http/http.dart' as http;
 
-class FinacialInputs extends StatelessWidget {
-  const FinacialInputs({super.key});
+class FinacialInputs extends StatefulWidget {
+  const FinacialInputs({Key? key}) : super(key: key);
+
+  @override
+  _FinacialInputsState createState() => _FinacialInputsState();
+}
+
+class _FinacialInputsState extends State<FinacialInputs> {
+  final TextEditingController kidsController = TextEditingController();
+  String prediction = "";
+
+  Future<void> predict() async {
+    final url = Uri.parse('https://b18a-43-225-19-156.ngrok-free.app/predict');
+    final json_data = json.encode([
+      [int.parse(kidsController.text)]
+    ]);
+
+    final response = await http.post(url,
+        body: json_data, headers: {'Content-Type': 'application/json'});
+
+    if (response.statusCode == 200) {
+      final jsonResponse = json.decode(response.body);
+      setState(() {
+        prediction = jsonResponse.toString();
+      });
+    } else {
+      setState(() {
+        prediction = 'Failed to predict';
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,19 +43,12 @@ class FinacialInputs extends StatelessWidget {
         body: SafeArea(
           child: SingleChildScrollView(
             child: Form(
-              // key: _formKey,
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  // ignore: prefer_const_literals_to_create_immutables
                   children: [
-                    //logo
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    SizedBox(
-                      height: 25,
-                    ),
+                    const SizedBox(height: 10),
+                    const SizedBox(height: 25),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: const Text(
@@ -36,25 +58,17 @@ class FinacialInputs extends StatelessWidget {
                         ),
                       ),
                     ),
-                    //username field
-                    const SizedBox(
-                      height: 50,
-                    ),
+                    const SizedBox(height: 50),
                     MyTextField(
                       hintText: "No of Kids?",
-
-                      // controller: usernameController,
-                      // formKey: _formKey,
+                      controller: kidsController,
+                      keyboardType: TextInputType.number,
                     ),
-
-                    SizedBox(
-                      height: 20,
-                    ),
-
+                    const SizedBox(height: 20),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: predict,
                       child: const Text("Predict !"),
-                      style: TextButton.styleFrom(
+                      style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.indigo[900],
                         shadowColor: Colors.grey,
                         shape: RoundedRectangleBorder(
@@ -63,10 +77,8 @@ class FinacialInputs extends StatelessWidget {
                         minimumSize: const Size(150, 50),
                       ),
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text("the Amount will be displayed here"),
+                    const SizedBox(height: 20),
+                    Text("(In Rs.) ${prediction.toUpperCase()}"),
                   ],
                 ),
               ),
