@@ -139,7 +139,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       //     ];
                       //   });
                       //   await Future.delayed(const Duration(seconds: 4));
-                      Navigator.pushNamed(context, MyRoutes.profile);
+                      Navigator.pushNamed(context, MyRoutes.mainPage);
                     },
                     child: const Text("Sign Up"),
                     style: TextButton.styleFrom(
