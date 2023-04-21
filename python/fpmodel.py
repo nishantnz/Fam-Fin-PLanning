@@ -7,7 +7,7 @@ import pandas as pd
 from flask import Flask, request, jsonify
 import joblib
 import traceback
-from flask_ngrok import run_with_ngrok
+
 
 dataset = pd.read_csv('inc_children_data_50')
 
@@ -34,7 +34,6 @@ regressor.fit(x_train, y_train)
 
 # Your API definition
 app = Flask(__name__)
-run_with_ngrok(app)
 
 
 @app.route('/predict', methods=['POST'])
@@ -57,4 +56,4 @@ def predict():
 
 if __name__ == '__main__':
     # If you don't provide any port the port will be set to 12345
-    app.run()
+    app.run(port=80, host='0.0.0.0')
