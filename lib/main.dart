@@ -1,5 +1,7 @@
+import 'package:family_financial_planning/pages/expense_tracker.dart';
 import 'package:family_financial_planning/pages/navpages/home_page.dart';
 import 'package:family_financial_planning/pages/login.dart';
+import 'package:family_financial_planning/pages/navpages/insideNavPage/financial_inputs.dart';
 import 'package:family_financial_planning/pages/navpages/main_page.dart';
 import 'package:family_financial_planning/pages/onboarding_page.dart';
 import 'package:family_financial_planning/pages/navpages/profile.dart';
@@ -37,7 +39,9 @@ class MyApp extends StatelessWidget {
         MyRoutes.profile: (context) => const ProfilePage(),
         MyRoutes.homePage: (context) => const HomePage(),
         MyRoutes.onBoarding: (context) => const OnBoarding(),
-        MyRoutes.mainPage: (context) => const MainPage()
+        MyRoutes.mainPage: (context) => const MainPage(),
+        MyRoutes.finacialInputs: (context) => FinacialInputs(),
+        MyRoutes.expenseTracker: (context) => ExpenseTracker(),
       },
     );
   }

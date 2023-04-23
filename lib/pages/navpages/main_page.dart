@@ -1,4 +1,4 @@
-import 'package:family_financial_planning/pages/navpages/financial_inputs.dart';
+import 'package:family_financial_planning/pages/navpages/financial_options.dart';
 import 'package:family_financial_planning/pages/navpages/goals_page.dart';
 import 'package:family_financial_planning/pages/navpages/home_page.dart';
 import 'package:family_financial_planning/pages/navpages/profile.dart';
@@ -19,7 +19,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   final pages = [
     HomePage(),
-    FinancialInputs(),
+    FinancialOptions(),
     Goals(),
     ProfilePage(),
   ];
@@ -48,14 +48,14 @@ class _MainPageState extends State<MainPage> {
             BottomNavigationBarItem(
               icon: Icon(Icons.text_snippet_outlined),
               label: "Financial Details",
-              backgroundColor: Color.fromRGBO(48, 35, 195, 1),
+              backgroundColor: Color.fromRGBO(64, 8, 103, 1),
               tooltip:
                   "Enter Your Financial Details and get to know more about plans of Family",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.monetization_on_outlined),
               label: "Goals",
-              backgroundColor: Color.fromRGBO(64, 8, 103, 1),
+              backgroundColor: Color.fromRGBO(48, 35, 195, 1),
               tooltip: "Get to know your Goals! ",
             ),
             BottomNavigationBarItem(

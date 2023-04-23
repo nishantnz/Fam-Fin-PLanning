@@ -105,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                           animator = true;
                         });
                         await Future.delayed(const Duration(seconds: 4));
-                        Navigator.pushNamed(context, MyRoutes.homePage);
+                        Navigator.pushNamed(context, MyRoutes.mainPage);
                       }
                     },
                     style: TextButton.styleFrom(
