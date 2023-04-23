@@ -72,13 +72,32 @@ class _MainPageState extends State<MainPage> {
           },
         ),
         appBar: AppBar(
-          title: GradientText(
-            "FINFAM",
-            colors: MyColors.appbartitlecolor,
-            gradientType: GradientType.linear,
-            style: const TextStyle(fontSize: 32),
+          titleTextStyle: TextStyle(
+            color: Colors.white,
+            fontSize: 25,
+            fontFamily: 'Righteous',
+            letterSpacing: 2.5,
+            fontWeight: FontWeight.bold,
+          ),
+          title: const Center(
+            child: Text(
+              "FINFAM",
+            ),
           ),
           leading: Image.asset("assets/images/logo.jpg"),
+          automaticallyImplyLeading: false,
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+                colors: <Color>[
+                  Color(0xFF130B74),
+                  Color(0xFF442489),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );

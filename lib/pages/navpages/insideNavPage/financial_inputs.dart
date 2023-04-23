@@ -15,7 +15,7 @@ class _FinacialInputsState extends State<FinacialInputs> {
   String prediction = "";
 
   Future<void> predict() async {
-    final url = Uri.parse('https://b18a-43-225-19-156.ngrok-free.app/predict');
+    final url = Uri.parse('http://34.93.226.111/predict');
     final json_data = json.encode([
       [int.parse(kidsController.text)]
     ]);
