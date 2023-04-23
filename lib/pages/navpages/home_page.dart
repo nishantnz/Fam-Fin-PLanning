@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            MyHomeWidgets.expenseCard(),
+            MyHomeWidgets.expenseCard(context),
             MyHomeWidgets.goalProgress(),
             // SizedBox(height: 20),
           ],

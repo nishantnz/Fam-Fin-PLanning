@@ -1,4 +1,5 @@
 import 'package:family_financial_planning/utils/colors.dart';
+import 'package:family_financial_planning/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:intl/intl.dart';
@@ -6,7 +7,7 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 
 class MyHomeWidgets {
-  static Container expenseCard() {
+  static Container expenseCard(BuildContext context) {
     String formattedDay = DateFormat('EEEE').format(DateTime.now());
     String formattedDate = DateFormat('dd').format(DateTime.now());
     String formattedMonthYear =
@@ -66,7 +67,10 @@ class MyHomeWidgets {
                   child: InkWell(
                     borderRadius: BorderRadius.circular(25.0),
                     splashColor: Colors.indigo,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushReplacementNamed(
+                          context, MyRoutes.expenseTracker);
+                    },
                     child: Container(
                       child: Image.asset("assets/images/plus.png"),
                     ),
