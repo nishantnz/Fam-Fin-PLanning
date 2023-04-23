@@ -44,6 +44,7 @@ dependencies:
   percent_indicator: ^4.2.3
   flutter_custom_clippers: ^2.1.0
   http: ^0.13.5
+  table_calendar: ^3.0.9
 
   
 
