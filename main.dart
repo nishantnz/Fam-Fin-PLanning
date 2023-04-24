@@ -3,6 +3,7 @@ import 'package:family_financial_planning/pages/navpages/home_page.dart';
 import 'package:family_financial_planning/pages/login.dart';
 import 'package:family_financial_planning/pages/navpages/insideNavPage/financial_inputs.dart';
 import 'package:family_financial_planning/pages/navpages/main_page.dart';
+import 'package:family_financial_planning/pages/navpages/output_page.dart';
 import 'package:family_financial_planning/pages/onboarding_page.dart';
 import 'package:family_financial_planning/pages/navpages/profile.dart';
 
@@ -12,8 +13,6 @@ import 'package:family_financial_planning/widgets/themes.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'pages/navpages/output_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,7 +43,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.mainPage: (context) => const MainPage(),
         MyRoutes.finacialInputs: (context) => FinacialInputs(),
         MyRoutes.expenseTracker: (context) => ExpenseTracker(),
-        MyRoutes.outputpage: (context) => OutputPage(),
+        MyRoutes.output_page: (context) => OutputPage(),
       },
     );
   }

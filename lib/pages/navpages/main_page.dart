@@ -1,6 +1,7 @@
 import 'package:family_financial_planning/pages/navpages/financial_options.dart';
-import 'package:family_financial_planning/pages/navpages/goals_page.dart';
+
 import 'package:family_financial_planning/pages/navpages/home_page.dart';
+import 'package:family_financial_planning/pages/navpages/output_page.dart';
 import 'package:family_financial_planning/pages/navpages/profile.dart';
 import 'package:family_financial_planning/utils/colors.dart';
 
@@ -20,7 +21,7 @@ class _MainPageState extends State<MainPage> {
   final pages = [
     HomePage(),
     FinancialOptions(),
-    Goals(),
+    OutputPage(),
     ProfilePage(),
   ];
   int _currentIndex = 0;
@@ -54,9 +55,8 @@ class _MainPageState extends State<MainPage> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.monetization_on_outlined),
-              label: "Goals",
+              label: "Output",
               backgroundColor: Color.fromRGBO(48, 35, 195, 1),
-              tooltip: "Get to know your Goals! ",
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person_sharp),
