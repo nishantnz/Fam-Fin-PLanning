@@ -45,6 +45,7 @@ dependencies:
   flutter_custom_clippers: ^2.1.0
   http: ^0.13.5
   table_calendar: ^3.0.9
+  google_nav_bar: ^5.0.6
 
   
 
