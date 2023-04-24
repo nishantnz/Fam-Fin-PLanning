@@ -15,10 +15,10 @@ class _FinacialInputsState extends State<FinacialInputs> {
   String prediction = "";
 
   Future<void> predict() async {
-    final url = Uri.parse('http://34.93.226.111/predict');
-    final json_data = json.encode([
-      [int.parse(kidsController.text)]
-    ]);
+    final url = Uri.parse('http://34.93.226.111/predictIncome');
+    final json_data = jsonEncode({
+      'childrens': int.parse(kidsController.text),
+    });
 
     final response = await http.post(url,
         body: json_data, headers: {'Content-Type': 'application/json'});
