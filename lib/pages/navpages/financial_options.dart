@@ -17,13 +17,18 @@ class FinancialOptions extends StatefulWidget {
 
 class _FinancialOptionsState extends State<FinancialOptions> {
   final TextEditingController kidsController = TextEditingController();
+  final TextEditingController incomeController = TextEditingController();
+  final TextEditingController debtsController = TextEditingController();
+  final TextEditingController investmentController = TextEditingController();
   String prediction = "";
+  String predictionkids = "";
+  int? countOfTap;
 
-  Future<void> predict() async {
-    final url = Uri.parse('http://34.93.226.111/predict');
-    final json_data = json.encode([
-      [int.parse(kidsController.text)]
-    ]);
+  Future<void> predictIncome() async {
+    final url = Uri.parse('http://34.93.226.111/predictIncome');
+    final json_data = json.encode({
+      'childrens': int.parse(kidsController.text),
+    });
 
     final response = await http.post(url,
         body: json_data, headers: {'Content-Type': 'application/json'});
@@ -31,11 +36,35 @@ class _FinancialOptionsState extends State<FinancialOptions> {
     if (response.statusCode == 200) {
       final jsonResponse = json.decode(response.body);
       setState(() {
-        prediction = jsonResponse["prediction"].toString();
+        prediction = jsonResponse["Income"].toString().substring(0, 12);
       });
     } else {
       setState(() {
         prediction = 'Failed to predict';
+      });
+    }
+  }
+
+  Future<void> predictKids() async {
+    final url = Uri.parse('http://34.93.226.111/predictChildren');
+    final json_data = json.encode({
+      'income': int.parse(incomeController.text),
+      'debt': int.parse(debtsController.text),
+      'investment': int.parse(investmentController.text),
+    });
+
+    final response = await http.post(url,
+        body: json_data, headers: {'Content-Type': 'application/json'});
+
+    if (response.statusCode == 200) {
+      final jsonResponse = json.decode(response.body);
+      setState(() {
+        predictionkids = jsonResponse["Number of Children"].toString();
+        print(predictionkids);
+      });
+    } else {
+      setState(() {
+        predictionkids = 'Failed to predict';
       });
     }
   }
@@ -59,18 +88,18 @@ class _FinancialOptionsState extends State<FinancialOptions> {
     2: false,
   };
 
-  Map<int, TextEditingController> _textEditingControllers = {
-    0: TextEditingController(),
-    1: TextEditingController(),
-    2: TextEditingController(),
-  };
+  // Map<int, TextEditingController> _textEditingControllers = {
+  //   0: TextEditingController(),
+  //   1: TextEditingController(),
+  //   2: TextEditingController(),
+  // };
 
-  @override
-  void dispose() {
-    _textEditingControllers.values
-        .forEach((controller) => controller.dispose());
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   _textEditingControllers.values
+  //       .forEach((controller) => controller.dispose());
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -148,20 +177,19 @@ class _FinancialOptionsState extends State<FinancialOptions> {
                                 height: 10,
                               ),
                               TextFormField(
-                                controller: _textEditingControllers.values
-                                    .elementAt(index),
+                                controller: incomeController,
                                 decoration: const InputDecoration(
-                                  hintText: 'Enter your income/salary',
+                                  hintText: '₹ Enter your income/salary',
                                   border: OutlineInputBorder(),
                                 ),
                               ),
                               const SizedBox(
                                 height: 10,
                               ),
-                              ElevatedButton(
-                                onPressed: () {},
-                                child: const Text("Save"),
-                              ),
+                              // ElevatedButton(
+                              //   onPressed: () {},
+                              //   child: const Text("Save"),
+                              // ),
                               SizedBox(
                                 height: 10,
                               ),
@@ -187,14 +215,24 @@ class _FinancialOptionsState extends State<FinancialOptions> {
                               ),
                               ElevatedButton(
                                 onPressed: () {
-                                  predict();
+                                  predictIncome();
                                 },
                                 child: Text("Predict"),
                               ),
                               SizedBox(
                                 height: 20,
                               ),
-                              Text("You have to make amount Rs: $prediction")
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                child: Text(
+                                  "You have to make amount  ₹$prediction",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 17,
+                                  ),
+                                ),
+                              )
                             ],
                           ),
                         ),
@@ -207,20 +245,19 @@ class _FinancialOptionsState extends State<FinancialOptions> {
                           child: Column(
                             children: [
                               TextFormField(
-                                controller: _textEditingControllers.values
-                                    .elementAt(index),
+                                controller: debtsController,
                                 decoration: const InputDecoration(
-                                  hintText: 'Tell us about your loans',
+                                  hintText: '₹ Tell us about your loans',
                                   border: OutlineInputBorder(),
                                 ),
                               ),
                               SizedBox(
                                 height: 20,
                               ),
-                              ElevatedButton(
-                                onPressed: () {},
-                                child: const Text("Save"),
-                              ),
+                              // ElevatedButton(
+                              //   onPressed: () {},
+                              //   child: const Text("Save"),
+                              // ),
                             ],
                           ),
                         ),
@@ -233,21 +270,20 @@ class _FinancialOptionsState extends State<FinancialOptions> {
                           child: Column(
                             children: [
                               TextFormField(
-                                controller: _textEditingControllers.values
-                                    .elementAt(index),
+                                controller: investmentController,
                                 decoration: const InputDecoration(
                                   hintText:
-                                      'Tell us about the investments you make',
+                                      '₹ Tell us about the investments you make',
                                   border: OutlineInputBorder(),
                                 ),
                               ),
                               SizedBox(
                                 height: 20,
                               ),
-                              ElevatedButton(
-                                onPressed: () {},
-                                child: const Text("Save"),
-                              ),
+                              // ElevatedButton(
+                              //   onPressed: () {},
+                              //   child: const Text("Save"),
+                              // ),
                             ],
                           ),
                         ),
@@ -258,6 +294,37 @@ class _FinancialOptionsState extends State<FinancialOptions> {
               },
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton(
+              onPressed: () {
+                predictKids();
+                countOfTap = 1;
+              },
+              child: const Text("Save"),
+            ),
+          ),
+          countOfTap == 1
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0, vertical: 10),
+                  child: predictionkids.contains("1")
+                      ? Text(
+                          "You have the capability to take care of $predictionkids children ",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                          ),
+                        )
+                      : Text(
+                          "You have the capability to take care of $predictionkids childrens ",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                          ),
+                        ),
+                )
+              : SizedBox(),
         ],
       ),
     );
